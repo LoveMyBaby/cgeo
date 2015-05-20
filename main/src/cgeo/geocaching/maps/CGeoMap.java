@@ -71,6 +71,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -109,6 +110,16 @@ public class CGeoMap extends AbstractMap implements ViewFactory {
      * initialization with an empty subscription to make static code analysis tools more happy
      */
     private Subscription resumeSubscription = Subscriptions.empty();
+
+    @Override
+    public void onSupportActionModeStarted(ActionMode mode) {
+
+    }
+
+    @Override
+    public void onSupportActionModeFinished(ActionMode mode) {
+
+    }
 
     /** Controls the behavior of the map */
     public enum MapMode {
@@ -321,12 +332,12 @@ public class CGeoMap extends AbstractMap implements ViewFactory {
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void setTitleIceCreamSandwich(final String title) {
-        activity.getActionBar().setTitle(title);
+        getDelegate().setTitle(title);
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void setSubtitleIceCreamSandwich(final String subtitle) {
-        activity.getActionBar().setSubtitle(subtitle);
+        getDelegate().getSupportActionBar().setSubtitle(subtitle);
     }
 
     /** Updates the progress. */
@@ -491,9 +502,9 @@ public class CGeoMap extends AbstractMap implements ViewFactory {
         // set layout
         ActivityMixin.setTheme(activity);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            activity.getActionBar().setDisplayHomeAsUpEnabled(true);
+            //activity.getActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        activity.setContentView(mapProvider.getMapLayoutId());
+        getDelegate().setContentView(mapProvider.getMapLayoutId());
         setTitle();
 
         // initialize map

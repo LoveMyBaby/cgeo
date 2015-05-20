@@ -1,6 +1,7 @@
 package cgeo.geocaching.maps.interfaces;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,4 +38,10 @@ public interface MapActivityImpl {
      * called from the pseudo actionbar layout
      */
     public abstract void navigateUp(View view);
+
+    void superOnPostCreate(Bundle savedInstanceState);
+
+    void superOnPostResume();
+
+    void superOnConfigurationChanged(Configuration newConfig);
 }

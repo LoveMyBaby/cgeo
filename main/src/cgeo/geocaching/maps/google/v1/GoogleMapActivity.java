@@ -9,7 +9,9 @@ import cgeo.geocaching.maps.interfaces.MapActivityImpl;
 import com.google.android.maps.MapActivity;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.view.View;
 public class GoogleMapActivity extends MapActivity implements MapActivityImpl, FilteredActivity {
 
     private final AbstractMap mapBase;
+
 
     public GoogleMapActivity() {
         mapBase = new CGeoMap(this);
@@ -88,6 +91,26 @@ public class GoogleMapActivity extends MapActivity implements MapActivityImpl, F
     }
 
     @Override
+    protected void onPostResume() {
+        mapBase.onPostResume();
+    }
+
+    @Override
+    public void superOnPostResume() {
+        super.onPostResume();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        mapBase.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public void superOnConfigurationChanged(Configuration newconfig) {
+        super.onConfigurationChanged(newconfig);
+    }
+
+    @Override
     public void superOnDestroy() {
         super.onDestroy();
     }
@@ -100,6 +123,11 @@ public class GoogleMapActivity extends MapActivity implements MapActivityImpl, F
     @Override
     public void navigateUp(final View view) {
         ActivityMixin.navigateUp(this);
+    }
+
+    @Override
+    public void superOnPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
     }
 
     @Override

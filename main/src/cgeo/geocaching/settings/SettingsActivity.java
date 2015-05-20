@@ -6,6 +6,7 @@ import cgeo.geocaching.Intents;
 import cgeo.geocaching.R;
 import cgeo.geocaching.SelectMapfileActivity;
 import cgeo.geocaching.activity.ActivityMixin;
+import cgeo.geocaching.activity.AppCompatPreferenceActivity;
 import cgeo.geocaching.apps.cache.navi.NavigationAppFactory;
 import cgeo.geocaching.apps.cache.navi.NavigationAppFactory.NavigationAppsEnum;
 import cgeo.geocaching.connector.gc.GCConnector;
@@ -60,7 +61,7 @@ import java.util.Locale;
  * more information on developing a Settings UI.
  *
  */
-public class SettingsActivity extends PreferenceActivity {
+public class SettingsActivity extends AppCompatPreferenceActivity {
 
     private static final String INTENT_OPEN_SCREEN = "OPEN_SCREEN";
     public static final int NO_RESTART_NEEDED = 1;

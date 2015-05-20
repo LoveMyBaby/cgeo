@@ -9,6 +9,7 @@ import cgeo.geocaching.maps.interfaces.MapActivityImpl;
 import org.mapsforge.android.maps.MapActivity;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +36,11 @@ public class MapsforgeMapActivity extends MapActivity implements MapActivityImpl
     @Override
     protected void onSaveInstanceState(final Bundle outState) {
         mapBase.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        mapBase.onPostCreate(savedInstanceState);
     }
 
     @Override
@@ -105,6 +111,27 @@ public class MapsforgeMapActivity extends MapActivity implements MapActivityImpl
     @Override
     public void superOnPause() {
         super.onPause();
+
+    }
+
+    @Override
+    protected void onPostResume() {
+        mapBase.onPostResume();
+    }
+
+    @Override
+    public void superOnPostResume() {
+        super.onPostResume();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        mapBase.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public void superOnConfigurationChanged(Configuration newconfig) {
+        super.onConfigurationChanged(newconfig);
     }
 
     @Override
@@ -115,6 +142,11 @@ public class MapsforgeMapActivity extends MapActivity implements MapActivityImpl
     @Override
     public void navigateUp(final View view) {
         ActivityMixin.navigateUp(this);
+    }
+
+    @Override
+    public void superOnPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
     }
 
     @Override
